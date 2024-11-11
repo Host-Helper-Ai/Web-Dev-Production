@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Floating Header Example</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <!-- Background shapes remain the same -->
     <div class="background-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
@@ -24,6 +27,10 @@
                 <a href="#impact" class="nav-link" data-en="Our impact" data-es="Nuestro impacto">Our impact</a>
                 <a href="#pricing" class="nav-link" data-en="Pricing" data-es="Precios">Pricing</a>
             </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+            </div>
             <div class="language-switcher">
                 <button onclick="switchLanguage('en')">EN</button>
                 <button onclick="switchLanguage('es')">ES</button>
@@ -45,7 +52,84 @@
             <h2>Our impact</h2>
             <p>See how we're making a difference in the world.</p>
         </section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Welcome Back</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                                <button class="btn btn-outline-secondary toggle-password" type="button">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Create Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-group mb-3">
+                            <label for="registerUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="registerUsername" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="registerPassword" required>
+                                <button class="btn btn-outline-secondary toggle-password" type="button">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
         
+
         <!-- Pricing Section -->
         <section id="pricing" class="pricing-section">
             <div class="container">
@@ -174,6 +258,24 @@
         function toggleMobileMenu() {
             document.body.classList.toggle('mobile-menu-open');
         }
+
+                // Add this new script for password toggle
+                document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.closest('.input-group').querySelector('input');
+                const icon = this.querySelector('i');
+                
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
     </script>
 </body>
 </html>

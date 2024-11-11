@@ -182,6 +182,131 @@ section p {
     width: 100%;
 }
 
+/* Auth Buttons in Header */
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.auth-buttons .btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+/* Modal Styles */
+.modal-content {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* Form Styles */
+.auth-form .form-label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.auth-form .form-control {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-form .form-control:focus {
+    border-color: #FF9933;
+    box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
+}
+
+.auth-form .input-group-text {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: none;
+    color: #6c757d;
+}
+
+.auth-form .input-group .form-control {
+    border-left: none;
+}
+
+.auth-form .input-group .btn-outline-secondary {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: none;
+    color: #6c757d;
+}
+
+.auth-form .input-group .btn-outline-secondary:hover {
+    background: none;
+    color: #FF9933;
+}
+
+/* Update existing media queries */
+@media (max-width: 768px) {
+    .auth-buttons {
+        display: none; /* Hide on mobile along with nav */
+    }
+    
+    /* Add auth buttons to mobile menu if you have one */
+    .mobile-menu .auth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+}
+
+/* Bootstrap Overrides */
+.btn-close {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.input-group {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.input-group-text,
+.input-group .form-control,
+.input-group .btn {
+    border-radius: 0;
+}
+
+/* Animation */
+.modal.fade .modal-dialog {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+    transform: scale(1);
+}
+
+
 /* Pricing Section */
 .pricing-section {
     background: linear-gradient(135deg, #FFF5E6, #FFE8CC);
