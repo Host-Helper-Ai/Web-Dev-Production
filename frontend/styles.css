@@ -9,7 +9,6 @@ body, html {
     font-family: 'Poppins', Arial, sans-serif;
     background: linear-gradient(135deg, #FFF5E6, #FFE8CC);
     color: #333;
-    overflow-x: hidden;
 }
 
 /* Background Shapes */
@@ -58,91 +57,257 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    transition: top 0.3s ease-in-out, height 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 16px 24px;
+    height: auto;
+    --scroll-progress: 0;
+    transform: none !important;
 }
 
-header.scrolled {
-    height: 60px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.header-initial {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
 }
+
+.header-floating {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(calc(8px + var(--scroll-progress) * 4px));
+    -webkit-backdrop-filter: blur(calc(8px + var(--scroll-progress) * 4px));
+    margin: 12px auto;
+    border-radius: 16px;
+    padding: 8px 20px;
+    width: min(90%, 1000px); /* Narrower when floating */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
 
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
-    height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    justify-content: space-between;
+    gap: 32px;
+    height: 48px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.header-floating .header-content {
+    height: 40px; /* Smaller height when floating */
+    gap: 24px; /* Reduced gap when floating */
+}
+
+/* Logo Animation */
 .logo {
     font-size: 24px;
     font-weight: 700;
     color: #FF9933;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.header-floating .logo {
+    font-size: 20px; /* Smaller logo when floating */
+}
+
+/* Navigation */
 nav {
     display: flex;
-    gap: 20px;
+    gap: 32px;
+    margin-left: auto;
+    margin-right: 32px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-floating nav {
+    gap: 24px; /* Reduced gap when floating */
 }
 
 nav a {
     text-decoration: none;
     color: #333;
-    transition: color 0.3s ease;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding: 4px 0;
 }
 
-nav a:hover {
-    color: #FF9933;
+.header-floating nav a {
+    font-size: 14px; /* Smaller text when floating */
 }
 
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-floating .auth-buttons {
+    gap: 8px; /* Smaller gap when floating */
+}
+
+.auth-buttons .btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-floating .auth-buttons .btn {
+    padding: 6px 16px; /* Smaller padding when floating */
+    font-size: 13px; /* Smaller font when floating */
+}
+
+/* Language Switcher */
 .language-switcher {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    align-items: center;
+    margin-left: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-floating .language-switcher {
+    margin-left: 12px;
 }
 
 .language-switcher button {
     background: none;
     border: none;
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
     cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    transition: color 0.3s ease;
-    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.language-switcher button:hover {
-    color: #FF9933;
+.header-floating .language-switcher button {
+    font-size: 13px; /* Smaller font when floating */
+    padding: 3px 6px; /* Smaller padding when floating */
 }
 
+/* Mobile Menu Button */
 .mobile-menu-button {
     display: none;
     background: none;
     border: none;
     font-size: 24px;
-    cursor: pointer;
     color: #333;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.header-floating .mobile-menu-button {
+    font-size: 20px; /* Smaller icon when floating */
+    padding: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .header-floating {
+        width: min(95%, 800px);
+    }
+    
+    nav {
+        gap: 24px;
+    }
+    
+    .header-floating nav {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 12px 16px;
+    }
+
+    .header-floating {
+        width: calc(100% - 32px);
+        margin: 8px 16px;
+        padding: 8px 16px;
+    }
+
+    nav, 
+    .auth-buttons,
+    .language-switcher {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+        margin-left: auto;
+    }
+
+    .header-content {
+        padding: 0;
+        height: 40px;
+    }
+
+    .header-floating .header-content {
+        height: 36px;
+    }
+
+    .header-floating .logo {
+        font-size: 18px;
+    }
+}
+
+/* Animation for Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    width: min(90%, 400px); /* Consistent with header width */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 24px;
+    border-radius: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}
+
+.header-floating .mobile-menu {
+    top: 70px; /* Adjust based on contracted header height */
+}
+
+.mobile-menu-open .mobile-menu {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Eraldamiseks lisasin rohkem commente siia */
+/* Main Content */
 /* Main Content */
 main {
     padding-top: 100px;
+    width: 100%;
+    max-width: 100%;
 }
 
+/* Section Styles */
 section {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 80px 20px;
 }
 
 section h2 {
@@ -158,8 +323,62 @@ section p {
     line-height: 1.5;
 }
 
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 24px;
+    border-radius: 16px;
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}
+
+.mobile-menu-open .mobile-menu {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 0 24px 0;
+}
+
+.mobile-menu .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+.mobile-menu .language-switcher {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 0;
+}
+
+/* Keep header visible */
+header.scrolled,
+header.header-floating,
+header.header-initial {
+    transform: none !important;
+    -webkit-transform: none !important;
+}
+
 /* Container */
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
