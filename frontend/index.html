@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Header Example</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <header id="header">
+        <div class="header-content">
+            <div class="logo">Logo</div>
+            <nav>
+                <a href="#brands" class="nav-link" data-en="Our brands" data-es="Nuestras marcas">Our brands</a>
+                <a href="#join" class="nav-link" data-en="Join our collective" data-es="Únete a nuestro colectivo">Join our collective</a>
+                <a href="#impact" class="nav-link" data-en="Our impact" data-es="Nuestro impacto">Our impact</a>
+                <a href="#pricing" class="nav-link" data-en="Pricing" data-es="Precios">Pricing</a>
+            </nav>
+            <div class="language-switcher">
+                <button onclick="switchLanguage('en')">EN</button>
+                <button onclick="switchLanguage('es')">ES</button>
+            </div>
+            <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="brands">
+            <h2>Our brands</h2>
+            <p>Discover our portfolio of innovative brands.</p>
+        </section>
+        <section id="join">
+            <h2>Join our collective</h2>
+            <p>Be part of our growing community of visionaries.</p>
+        </section>
+        <section id="impact">
+            <h2>Our impact</h2>
+            <p>See how we're making a difference in the world.</p>
+        </section>
+        
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div class="section-header text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Simple Pricing</h2>
+                    <p class="section-subtitle">Choose the perfect plan for your needs</p>
+                </div>
+
+                <div class="pricing-cards">
+
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pricing-header">
+                            <span class="plan-badge">Custom</span>
+                            <div class="price">
+                                <span class="currency">€</span>
+                                <span class="amount">30</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="text-muted">For large-scale operations</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Custom AI training</li>
+                                <li><i class="fas fa-check"></i> Unlimited properties</li>
+                                <li><i class="fas fa-check"></i> 24/7 premium support</li>
+                                <li><i class="fas fa-check"></i> Enterprise analytics</li>
+                                <li><i class="fas fa-check"></i> Smart pricing</li>
+                                <li><i class="fas fa-check"></i> Custom training</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <button class="btn btn-outline-primary btn-lg w-100 buy-button" data-plan="enterprise">Contact Sales</button>
+                        </div>
+                    </div>
+
+                
+                    <!-- Professional Plan -->
+                    <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="100">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <span class="plan-badge">Pro</span>
+                            <div class="price">
+                                <span class="currency">€</span>
+                                <span class="amount">20</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="text-muted">Best for growing businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Advanced AI responses</li>
+                                <li><i class="fas fa-check"></i> Up to 5 properties</li>
+                                <li><i class="fas fa-check"></i> Priority support</li>
+                                <li><i class="fas fa-check"></i> Advanced analytics</li>
+                                <li><i class="fas fa-check"></i> Smart pricing</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Custom training</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <button class="btn btn-primary btn-lg w-100 buy-button" data-plan="professional">Get Started</button>
+                            <p class="text-center mt-3 mb-0"><small>14-day money-back guarantee</small></p>
+                        </div>
+                    </div>
+                
+
+                    <!-- Starter Plan -->
+                    <div class="pricing-card" data-aos="fade-up">
+                        <div class="pricing-header">
+                            <span class="plan-badge">Basic</span>
+                            <div class="price">
+                                <span class="currency">€</span>
+                                <span class="amount">5</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p class="text-muted">Perfect for individual hosts</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Basic AI responses</li>
+                                <li><i class="fas fa-check"></i> 1 property</li>
+                                <li><i class="fas fa-check"></i> Email support</li>
+                                <li><i class="fas fa-check"></i> Basic analytics</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Smart pricing</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Custom training</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <button class="btn btn-outline-primary btn-lg w-100 buy-button" data-plan="starter">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const header = document.getElementById('header');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let currentLang = 'en';
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.top = '-80px';
+            } else {
+                header.style.top = '0';
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+            if (scrollTop > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            navLinks.forEach(link => {
+                link.textContent = link.getAttribute(`data-${lang}`);
+            });
+        }
+
+        function toggleMobileMenu() {
+            document.body.classList.toggle('mobile-menu-open');
+        }
+    </script>
+</body>
+</html>
