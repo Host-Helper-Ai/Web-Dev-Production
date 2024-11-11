@@ -9,60 +9,54 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
-
-    <style>
-        .navbar,
-        .navbar-expand,
-        .navbar-expand-lg,
-        .navbar-light,
-        .bg-light {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-        }
-        
-        /* Ensure header stays visible */
-        header {
-            transform: none !important;
-        }
-        
-        /* Remove any overflow restrictions */
-        body, html {
-            overflow-x: visible;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Background shapes remain the same -->
+    <!-- Background shapes -->
     <div class="background-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
     </div>
 
-    <header id="header">
-        <div class="header-content">
-            <div class="logo">Logo</div>
-            <nav>
-                <a href="#brands" class="nav-link" data-en="Our brands" data-es="Nuestras marcas">Our brands</a>
-                <a href="#join" class="nav-link" data-en="Join our collective" data-es="Únete a nuestro colectivo">Join our collective</a>
-                <a href="#impact" class="nav-link" data-en="Our impact" data-es="Nuestro impacto">Our impact</a>
-                <a href="#pricing" class="nav-link" data-en="Pricing" data-es="Precios">Pricing</a>
-            </nav>
-            <div class="auth-buttons">
-                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+    <!-- Header -->
+    <div class="header-wrapper">
+        <header id="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-text">Logo</span>
+                </div>
+                
+                <nav>
+                    <a href="#brands" class="nav-link" data-en="Our brands" data-es="Nuestras marcas">Our brands</a>
+                    <a href="#join" class="nav-link" data-en="Join our collective" data-es="Únete a nuestro colectivo">Join our collective</a>
+                    <a href="#impact" class="nav-link" data-en="Our impact" data-es="Nuestro impacto">Our impact</a>
+                    <a href="#pricing" class="nav-link" data-en="Pricing" data-es="Precios">Pricing</a>
+                </nav>
+
+                <div class="auth-buttons">
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-user"></i>
+                        <span>Login</span>
+                    </button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <span>Register</span>
+                    </button>
+                </div>
+
+                <div class="language-switcher">
+                    <button onclick="switchLanguage('en')" class="active">EN</button>
+                    <button onclick="switchLanguage('es')">ES</button>
+                </div>
+
+                <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                    <span class="menu-icon"></span>
+                </button>
             </div>
-            <div class="language-switcher">
-                <button onclick="switchLanguage('en')">EN</button>
-                <button onclick="switchLanguage('es')">ES</button>
-            </div>
-            <button class="mobile-menu-button" onclick="toggleMobileMenu()">☰</button>
-        </div>
-    </header>
-    
-    <!-- Add mobile menu container -->
+        </header>
+    </div>
+
+    <!-- Mobile Menu -->
     <div class="mobile-menu">
         <nav>
             <a href="#brands" class="nav-link">Our brands</a>
@@ -71,8 +65,13 @@
             <a href="#pricing" class="nav-link">Pricing</a>
         </nav>
         <div class="auth-buttons">
-            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <i class="fas fa-user"></i>
+                <span>Login</span>
+            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+                <span>Register</span>
+            </button>
         </div>
         <div class="language-switcher">
             <button onclick="switchLanguage('en')">EN</button>

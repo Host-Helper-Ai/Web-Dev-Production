@@ -1,4 +1,10 @@
 /* Base Styles */
+:root {
+    --primary: #FF9933;
+    --header-height: 80px;
+    --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -29,7 +35,7 @@ body, html {
 .shape-1 {
     width: 300px;
     height: 300px;
-    background-color: #FF9933;
+    background-color: var(--primary);
     top: -150px;
     left: -150px;
 }
@@ -51,85 +57,69 @@ body, html {
     transform: translate(-50%, -50%);
 }
 
-/* Header Styles */
-header {
+/* Header Wrapper */
+.header-wrapper {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
     z-index: 1000;
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    background-color: rgba(255, 255, 255, 0.98);
+    pointer-events: none;
 }
 
-.header-initial {
+/* Header Styles */
+header {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(0);
-    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0;
+    transition: var(--transition);
+    box-sizing: border-box;
+    padding: 11px 24px;
+    pointer-events: auto;
+    
 }
 
 .header-floating {
+    width: min(85%, 1200px);
     background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(calc(8px + var(--scroll-progress) * 4px));
-    margin: 12px auto;
     border-radius: 16px;
-    padding: 8px 20px;
-    width: min(90%, 1000px); /* Narrower when floating */
+    padding: 12px 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 768px) {
-    header {
-        width: calc(100% - 20px) !important;
-    }
-}
-
-body {
-    padding-top: 100px; /* Adjust this value based on your header's height */
-}
-
 .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 32px;
     height: 48px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
 }
 
-.header-floating .header-content {
-    height: 40px; /* Smaller height when floating */
-    gap: 24px; /* Reduced gap when floating */
-}
-
-/* Logo Animation */
+/* Logo */
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: #FF9933;
+    color: var(--primary);
     flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
 }
 
 .header-floating .logo {
-    font-size: 20px; /* Smaller logo when floating */
+    font-size: 20px;
 }
 
 /* Navigation */
 nav {
     display: flex;
     gap: 32px;
-    margin-left: auto;
-    margin-right: 32px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.header-floating nav {
-    gap: 24px; /* Reduced gap when floating */
+    margin: 0 auto;
+    transition: var(--transition);
 }
 
 nav a {
@@ -137,13 +127,36 @@ nav a {
     color: #333;
     font-weight: 500;
     font-size: 15px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     position: relative;
     padding: 4px 0;
 }
 
+nav a:hover {
+    color: var(--primary);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.header-floating nav {
+    gap: 24px;
+}
+
 .header-floating nav a {
-    font-size: 14px; /* Smaller text when floating */
+    font-size: 14px;
 }
 
 /* Auth Buttons */
@@ -151,11 +164,6 @@ nav a {
     display: flex;
     gap: 12px;
     align-items: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.header-floating .auth-buttons {
-    gap: 8px; /* Smaller gap when floating */
 }
 
 .auth-buttons .btn {
@@ -163,12 +171,36 @@ nav a {
     font-size: 14px;
     font-weight: 500;
     border-radius: 8px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.header-floating .auth-buttons .btn {
-    padding: 6px 16px; /* Smaller padding when floating */
-    font-size: 13px; /* Smaller font when floating */
+.auth-buttons .btn i {
+    font-size: 16px;
+}
+
+.auth-buttons .btn-outline-primary {
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.auth-buttons .btn-outline-primary:hover {
+    background: rgba(255, 153, 51, 0.1);
+    transform: translateY(-1px);
+}
+
+.auth-buttons .btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.auth-buttons .btn-primary:hover {
+    background: #FF8000;
+    transform: translateY(-1px);
 }
 
 /* Language Switcher */
@@ -176,12 +208,6 @@ nav a {
     display: flex;
     gap: 8px;
     align-items: center;
-    margin-left: 16px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.header-floating .language-switcher {
-    margin-left: 12px;
 }
 
 .language-switcher button {
@@ -192,12 +218,19 @@ nav a {
     font-weight: 500;
     color: #666;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
+    position: relative;
 }
 
-.header-floating .language-switcher button {
-    font-size: 13px; /* Smaller font when floating */
-    padding: 3px 6px; /* Smaller padding when floating */
+.language-switcher button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: translateX(-50%);
 }
 
 /* Mobile Menu Button */
@@ -205,42 +238,85 @@ nav a {
     display: none;
     background: none;
     border: none;
-    font-size: 24px;
-    color: #333;
-    cursor: pointer;
     padding: 8px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.header-floating .mobile-menu-button {
-    font-size: 20px; /* Smaller icon when floating */
-    padding: 6px;
+.menu-icon,
+.menu-icon::before,
+.menu-icon::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    transition: var(--transition);
+    position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+}
+
+.menu-icon::before { top: -6px; }
+.menu-icon::after { bottom: -6px; }
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: calc(var(--header-height) + 20px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    width: calc(100% - 40px);
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}
+
+.mobile-menu-open .mobile-menu {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    header {
+        width: 95%;
+    }
+    
     .header-floating {
-        width: min(95%, 800px);
+        width: min(90%, 1000px);
     }
     
     nav {
         gap: 24px;
     }
-    
-    .header-floating nav {
-        gap: 20px;
-    }
 }
 
 @media (max-width: 768px) {
+    .header-wrapper {
+        padding: 12px;
+    }
+
     header {
+        width: 100%;
         padding: 12px 16px;
     }
 
     .header-floating {
-        width: calc(100% - 32px);
-        margin: 8px 16px;
-        padding: 8px 16px;
+        width: 100%;
+        border-radius: 12px;
     }
 
     nav, 
@@ -251,60 +327,25 @@ nav a {
 
     .mobile-menu-button {
         display: block;
-        margin-left: auto;
     }
 
     .header-content {
-        padding: 0;
         height: 40px;
     }
 
-    .header-floating .header-content {
-        height: 36px;
-    }
-
-    .header-floating .logo {
-        font-size: 18px;
+    .logo {
+        font-size: 20px;
     }
 }
 
-/* Animation for Mobile Menu */
-.mobile-menu {
-    position: fixed;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    width: min(90%, 400px); /* Consistent with header width */
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 24px;
-    border-radius: 16px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    z-index: 999;
-}
-
-.header-floating .mobile-menu {
-    top: 70px; /* Adjust based on contracted header height */
-}
-
-.mobile-menu-open .mobile-menu {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Eraldamiseks lisasin rohkem commente siia */
-/* Main Content */
 /* Main Content */
 main {
     padding-top: 100px;
     width: 100%;
     max-width: 100%;
 }
+
+/* Keep your existing sections and other styles... */
 
 /* Section Styles */
 section {
