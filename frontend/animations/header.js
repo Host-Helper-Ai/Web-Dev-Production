@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollTop = 0;
     let ticking = false;
 
+    // Add transition for smooth effects
+    header.style.transition = 'backdrop-filter 0.3s ease, background-color 0.3s ease, width 0.3s ease';
+
     // Initial state
     updateHeaderState(0);
 
@@ -20,7 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateHeaderState(scrollTop) {
-        const scrollPercentage = Math.min(scrollTop / 50, 1);
+        const scrollDistance = 200; // Increased from 50 to 200 for a longer effect
+        const scrollPercentage = Math.min(scrollTop / scrollDistance, 1);
+        
+        // Calculate blur and transparency based on scroll
+        const blurValue = scrollPercentage * 5; // Will go from 0 to 5px
+        const transparency = 0.9 - (scrollPercentage * 0.4); // Will go from 0.9 to 0.5
+        
+        // Update header styles
+        header.style.backdropFilter = `blur(${blurValue}px)`;
+        header.style.webkitBackdropFilter = `blur(${blurValue}px)`;
+        header.style.backgroundColor = `rgba(250, 244, 235, ${transparency})`;
         
         if (scrollTop <= 0) {
             // At the very top
@@ -31,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Any scroll position
             header.classList.remove('header-initial');
             header.classList.add('header-floating');
-            header.style.setProperty('--scroll-progress', scrollPercentage);
+            header.style.setProperty('--scroll-progress', scrollPercentage.toString());
         }
-
+    
         // Smooth transition for width
         if (window.innerWidth > 768) {
             const baseWidth = 90; // Base width percentage
@@ -41,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.width = `${baseWidth - minWidth}%`;
         }
     }
-
+    
     // Language switcher
     window.switchLanguage = function(lang) {
         navLinks.forEach(link => {
