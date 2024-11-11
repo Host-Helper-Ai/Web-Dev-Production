@@ -24,16 +24,33 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate how far user has scrolled as a percentage (max 100)
         const scrollPercentage = Math.min(scrollTop / 50, 1);
         
+        // Always keep the header visible
+        header.style.position = 'fixed';
+        header.style.top = '20px';
+        header.style.left = '50%';
+        header.style.transform = 'translateX(-50%)';
+        header.style.transition = 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        
         if (scrollTop <= 0) {
             // At the very top
             header.classList.remove('header-floating', 'header-scrolling');
             header.classList.add('header-initial');
             header.style.setProperty('--scroll-progress', '0');
+            header.style.width = '100%';
+            header.style.borderRadius = '0';
+            header.style.boxShadow = 'none';
         } else {
             // Any scroll position
             header.classList.remove('header-initial');
             header.classList.add('header-floating', 'header-scrolling');
             header.style.setProperty('--scroll-progress', scrollPercentage);
+            
+            // Smooth transition to pill shape
+            header.style.borderRadius = `${scrollPercentage * 30}px`;
+            header.style.width = `calc(100% - ${scrollPercentage * 40}px)`;
+            header.style.maxWidth = '1200px';
+            header.style.padding = `${16 - scrollPercentage * 8}px ${24 - scrollPercentage * 4}px`;
+            header.style.boxShadow = `0 ${scrollPercentage * 8}px ${scrollPercentage * 16}px rgba(0, 0, 0, ${scrollPercentage * 0.1})`;
         }
     }
 
@@ -185,3 +202,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+console.log("Header script loaded and executed.");

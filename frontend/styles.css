@@ -54,15 +54,13 @@ body, html {
 /* Header Styles */
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     z-index: 1000;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 16px 24px;
-    height: auto;
-    --scroll-progress: 0;
-    transform: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    background-color: rgba(255, 255, 255, 0.98);
 }
 
 .header-initial {
@@ -72,8 +70,8 @@ header {
 }
 
 .header-floating {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(calc(8px + var(--scroll-progress) * 4px));
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(calc(8px + var(--scroll-progress) * 4px));
     margin: 12px auto;
     border-radius: 16px;
@@ -82,6 +80,15 @@ header {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
+@media (max-width: 768px) {
+    header {
+        width: calc(100% - 20px) !important;
+    }
+}
+
+body {
+    padding-top: 100px; /* Adjust this value based on your header's height */
+}
 
 .header-content {
     max-width: 1200px;
@@ -835,4 +842,19 @@ header.header-initial {
 
 .pricing-card:nth-child(3) {
     animation-delay: 0.4s;
+}
+header {
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.header-floating {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 768px) {
+    header {
+        width: calc(100% - 20px) !important;
+    }
 }
