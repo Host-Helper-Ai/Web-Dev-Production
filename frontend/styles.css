@@ -75,20 +75,25 @@ header.scrolled {
     margin: 0 auto;
     height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    position: relative; /* Added for absolute positioning of auth buttons */
 }
 
 .logo {
     font-size: 24px;
     font-weight: 700;
     color: #FF9933;
+    flex: 0 0 auto; /* Prevent logo from growing/shrinking */
+    margin-right: 40px; /* Add space between logo and nav */
 }
 
 nav {
     display: flex;
     gap: 20px;
+    justify-content: center;
+    flex: 1; /* Take up remaining space */
+    margin: 0 auto; /* Center the navigation */
 }
 
 nav a {
@@ -96,15 +101,24 @@ nav a {
     color: #333;
     transition: color 0.3s ease;
     font-weight: 600;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 nav a:hover {
     color: #FF9933;
 }
 
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Push to the right */
+    margin-right: 20px; /* Space between auth buttons and language switcher */
+}
+
 .language-switcher {
     display: flex;
     gap: 10px;
+    margin-left: 20px; /* Space between auth buttons and language switcher */
 }
 
 .language-switcher button {
@@ -115,6 +129,7 @@ nav a:hover {
     color: #333;
     transition: color 0.3s ease;
     font-weight: 600;
+    padding: 5px 10px;
 }
 
 .language-switcher button:hover {
@@ -128,6 +143,65 @@ nav a:hover {
     font-size: 24px;
     cursor: pointer;
     color: #333;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    nav {
+        display: none; /* Hide navigation on mobile */
+    }
+    
+    .mobile-menu-button {
+        display: block;
+        margin-left: auto;
+    }
+    
+    .auth-buttons {
+        margin-right: 10px;
+    }
+    
+    .language-switcher {
+        margin-left: 10px;
+    }
+}
+
+/* Mobile menu styles */
+body.mobile-menu-open nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Optional: Adjust button styles for better visibility */
+.auth-buttons .btn {
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+.auth-buttons .btn-outline-primary {
+    border-color: #FF9933;
+    color: #FF9933;
+}
+
+.auth-buttons .btn-outline-primary:hover {
+    background-color: #FF9933;
+    color: white;
+}
+
+.auth-buttons .btn-primary {
+    background-color: #FF9933;
+    border-color: #FF9933;
+}
+
+.auth-buttons .btn-primary:hover {
+    background-color: #e67300;
+    border-color: #e67300;
 }
 
 /* Main Content */
