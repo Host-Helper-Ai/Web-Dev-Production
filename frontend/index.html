@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Header Example</title>
+    <title>Host Helper AI</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
-    <!-- Background shapes -->
+    <!-- Keep your existing background shapes -->
     <div class="background-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
     </div>
+
 
     <!-- Header -->
     <div class="header-wrapper">
@@ -80,6 +80,74 @@
     </div>
 
     <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="icon-container">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h1>Host Helper AI</h1>
+                <p>AI-powered assistance for Airbnb hosts</p>
+                <button class="cta-button">Get Started</button>
+            </div>
+        </section>
+    
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="section-container">
+                <h2 data-aos="fade-up">Smart Hosting Solutions</h2>
+                <div class="features-grid">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-comments"></i>
+                        <h3>24/7 Support</h3>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-home"></i>
+                        <h3>Home Guide</h3>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-star"></i>
+                        <h3>Local Tips</h3>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Concierge</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="section-container">
+                <h2 data-aos="fade-up">Hosting Transformed</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="stat-value">95%</div>
+                        <p class="stat-label">Satisfaction</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-value">24/7</div>
+                        <p class="stat-label">Availability</p>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-value">50%</div>
+                        <p class="stat-label">Time Saved</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="section-container">
+                    <h2 data-aos="fade-up">Ready to Elevate?</h2>
+                    <button class="cta-button" data-aos="fade-up" data-aos-delay="100">
+                        Start Free Trial
+                    </button>
+                </div>
+            </section>
+        <div id="react-main-content"></div>
         <section id="brands">
             <h2>Our brands</h2>
             <p>Discover our portfolio of innovative brands.</p>
@@ -317,6 +385,22 @@
             });
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@4.1.17/dist/framer-motion.js"></script>
     <script src="animations/header.js"></script>
+    <script src="animations/landing-page.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+    </script>
 </body>
 </html>
