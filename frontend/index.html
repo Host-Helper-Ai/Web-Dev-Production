@@ -140,20 +140,142 @@
             </div>
         </section>
 
-            <!-- CTA Section -->
-            <section class="cta-section">
-                <div class="section-container">
-                    <h2 data-aos="fade-up">Ready to Elevate?</h2>
-                    <button class="cta-button" data-aos="fade-up" data-aos-delay="100">
-                        Start Free Trial
-                    </button>
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="section-container">
+        <h2 data-aos="fade-up">Ready to Elevate?</h2>
+        <button class="cta-button" data-aos="fade-up" data-aos-delay="100">
+            Start Free Trial
+        </button>
+    </div>
+</section>
+
+<!-- AI Chat Demo Section -->
+<section class="chat-demo-section">
+    <div class="chat-demo-header">
+        <h2 data-aos="fade-in">WhatsApp Showcase</h2>
+        <p data-aos="fade-in" data-aos-delay="100">
+            Experience an interactive preview of our AI assistant. Our actual product offers enhanced features, 
+            advanced AI capabilities, and seamless integration with your hosting platform.
+        </p>
+    </div>
+    <div class="iphone-frame" data-aos="fade-up" data-aos-delay="200">
+        <div class="notch"></div>
+        <div class="screen">
+            <div class="whatsapp-header">
+                <div class="profile-pic">AI</div>
+                <div>
+                    <h2>AI Assistant</h2>
                 </div>
+            </div>
+            <div class="chat-container" id="chatContainer">
+                <div class="message received">
+                    Hello! I'm your Airbnb AI Assistant. How can I help you today? 👋
+                </div>
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+            <button class="toggle-prompts" id="togglePrompts">Toggle Quick Replies</button>
+            <div class="quick-replies" id="quickReplies">
+                <button class="quick-reply-btn">Where are the towels?</button>
+                <button class="quick-reply-btn">What's the Wi-Fi password?</button>
+                <button class="quick-reply-btn">What's my address?</button>
+            </div>
+            <div class="input-area">
+                <input type="text" class="message-input" placeholder="Type a message..." id="messageInput">
+                <button class="send-button" id="sendButton">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9" stroke="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
             </section>
         <div id="react-main-content"></div>
+
         <section id="brands">
             <h2>Our brands</h2>
             <p>Discover our portfolio of innovative brands.</p>
         </section>
+        
+<!-- Photo Gallery Section -->
+<div class="gallery-container">
+    <div class="gallery-header">
+        <h2>Our Portfolio</h2>
+    </div>
+    
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="assets/images/pic1.png" alt="Property 1" width="800" height="600">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Luxury Villa</h3>
+                <p class="gallery-item-description">Elegant beachfront villa with panoramic ocean views.</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="assets/images/pic2.png" alt="Property 2" width="800" height="600">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Urban Loft</h3>
+                <p class="gallery-item-description">Modern city living in the heart of downtown.</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="assets/images/pic3.png" alt="Property 3" width="800" height="600">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Mountain Retreat</h3>
+                <p class="gallery-item-description">Cozy cabin with stunning mountain views.</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="assets/images/pic4.png" alt="Property 4" width="800" height="600">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Seaside Cottage</h3>
+                <p class="gallery-item-description">Charming beachside getaway perfect for families.</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="assets/images/pic5.png" alt="Property 5" width="800" height="600">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Desert Oasis</h3>
+                <p class="gallery-item-description">Modern desert home with private pool.</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="assets/images/pic6.png" alt="Property 6" width="800" height="600">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Forest Hideaway</h3>
+                <p class="gallery-item-description">Secluded forest retreat with luxury amenities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <button class="lightbox-arrow lightbox-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    <img src="" alt="Lightbox image" width="800" height="600">
+    <button class="lightbox-arrow lightbox-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+</div>
+
         <section id="join">
             <h2>Join our collective</h2>
             <p>Be part of our growing community of visionaries.</p>
@@ -425,7 +547,7 @@
     <script src="https://unpkg.com/framer-motion@4.1.17/dist/framer-motion.js"></script>
     <script src="animations/header.js"></script>
     <script src="animations/landing-page.js"></script>
-    <script src="animations/iphoneconversation.js"></script>  <!-- Add this line -->
+    <script src="animations/gallery.js"></script> 
     <script>
         // Initialize AOS
         AOS.init({
@@ -486,5 +608,113 @@
         });
     });
     </script>
+
+<script>
+    // Gallery Lightbox
+    document.addEventListener('DOMContentLoaded', () => {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+    
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const imgAlt = item.querySelector('img').alt;
+                lightboxImg.src = imgSrc;
+                lightboxImg.alt = imgAlt;
+                lightbox.classList.add('active');
+            });
+        });
+    
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+            }
+        });
+    });
+    </script>
+
+<script>
+    const chatContainer = document.getElementById('chatContainer');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    const typingIndicator = document.getElementById('typingIndicator');
+    const quickReplies = document.querySelectorAll('.quick-reply-btn');
+    const togglePrompts = document.getElementById('togglePrompts');
+    const quickRepliesContainer = document.getElementById('quickReplies');
+    
+    const responses = {
+        "Where are the towels?": "The towels are located in the bathroom under the sink. You'll find both bath towels and hand towels there. 🛁",
+        "What's the Wi-Fi password?": "The Wi-Fi password is: AirBnB2024#Secure! \nNetwork name: CasaMalaga_5G 📶",
+        "What's my address?": "Your address is: Calle Granada 42, Apartment 3B\nMálaga, Spain 29015 📍",
+        "help": "I can help you with:\n- Location of items\n- Wi-Fi details\n- Address information\n- Check-in/out times\n- Local recommendations\n- House rules\n\nJust ask me anything! 😊"
+    };
+    
+    togglePrompts.addEventListener('click', () => {
+        quickRepliesContainer.classList.toggle('hidden');
+        togglePrompts.textContent = quickRepliesContainer.classList.contains('hidden') ? 
+            'Show Quick Replies' : 'Hide Quick Replies';
+    });
+    
+    function addMessage(message, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', type);
+        messageDiv.textContent = message;
+        chatContainer.insertBefore(messageDiv, typingIndicator);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+    
+    function showTypingIndicator() {
+        typingIndicator.classList.add('typing-active');
+    }
+    
+    function hideTypingIndicator() {
+        typingIndicator.classList.remove('typing-active');
+    }
+    
+    function handleResponse(message) {
+        addMessage(message, 'sent');
+        
+        showTypingIndicator();
+        setTimeout(() => {
+            hideTypingIndicator();
+            const response = responses[message] || "I'm not sure about that. Type 'help' to see what I can assist you with! 😊";
+            addMessage(response, 'received');
+        }, 1500);
+    }
+    
+    function sendMessage() {
+        const message = messageInput.value.trim();
+        if (message) {
+            handleResponse(message);
+            messageInput.value = '';
+        }
+    }
+    
+    quickReplies.forEach(button => {
+        button.addEventListener('click', () => {
+            handleResponse(button.textContent);
+        });
+    });
+    
+    sendButton.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    </script>
+
 </body>
 </html>

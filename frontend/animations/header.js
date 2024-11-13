@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('header');
     const navLinks = document.querySelectorAll('.nav-link');
+    const authButtons = document.querySelector('.auth-buttons');
+    const headerContent = document.querySelector('.header-content');
     let lastScrollTop = 0;
     let ticking = false;
 
-    // Add transition for smooth effects
-    header.style.transition = 'backdrop-filter 0.3s ease, background-color 0.3s ease, width 0.3s ease';
+    // Add transitions for smooth effects
+    header.style.transition = 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    if (authButtons) {
+        authButtons.style.transition = 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    }
 
     // Initial state
     updateHeaderState(0);
@@ -23,17 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateHeaderState(scrollTop) {
-        const scrollDistance = 200; // Increased from 50 to 200 for a longer effect
+        const scrollDistance = 150; // Reduced distance for faster transition
         const scrollPercentage = Math.min(scrollTop / scrollDistance, 1);
         
         // Calculate blur and transparency based on scroll
-        const blurValue = scrollPercentage * 5; // Will go from 0 to 5px
-        const transparency = 0.9 - (scrollPercentage * 0.4); // Will go from 0.9 to 0.5
+        const blurValue = scrollPercentage * 5;
+        const transparency = 0.9 - (scrollPercentage * 0.4);
         
         // Update header styles
         header.style.backdropFilter = `blur(${blurValue}px)`;
         header.style.webkitBackdropFilter = `blur(${blurValue}px)`;
         header.style.backgroundColor = `rgba(250, 244, 235, ${transparency})`;
+        
+        // Handle auth buttons fade out
+        if (authButtons) {
+            authButtons.style.opacity = 1 - (scrollPercentage * 2); // Faster fade out
+            authButtons.style.transform = `translateY(${scrollPercentage * -20}px)`;
+            authButtons.style.visibility = scrollPercentage >= 0.5 ? 'hidden' : 'visible';
+            // Adjust header height when auth buttons are hidden
+            headerContent.style.height = `${48 - (scrollPercentage * 8)}px`; // Smoothly reduce height
+        }
         
         if (scrollTop <= 0) {
             // At the very top
@@ -49,11 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Smooth transition for width
         if (window.innerWidth > 768) {
-            const baseWidth = 90; // Base width percentage
-            const minWidth = scrollPercentage * 35; // Amount to reduce by when scrolling
+            const baseWidth = 90;
+            const minWidth = scrollPercentage * 45; // Increased reduction for smaller header
             header.style.width = `${baseWidth - minWidth}%`;
+            
+            // Additional padding reduction
+            const basePadding = 24;
+            const minPadding = scrollPercentage * 12;
+            header.style.padding = `${basePadding - minPadding}px ${basePadding - minPadding}px`;
         }
+
+        // Scale down nav items
+        navLinks.forEach(link => {
+            const scale = 1 - (scrollPercentage * 0.1);
+            link.style.transform = `scale(${scale})`;
+        });
     }
+
     
     // Language switcher
     window.switchLanguage = function(lang) {
@@ -116,5 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    });
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateHeaderState(lastScrollTop);
+        }, 100);
     });
 });
