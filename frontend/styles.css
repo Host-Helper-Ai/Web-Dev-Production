@@ -8,7 +8,51 @@
 html {
     scroll-behavior: smooth;
 }
-
+chat-demo-section {
+    position: relative;
+    animation: fadeInUp 3.5s ease-out forwards;
+    animation-play-state: paused;
+    visibility: hidden;
+  }
+  
+  .chat-demo-section.animate {
+    visibility: visible;
+    animation-play-state: running;
+  }
+  
+  .iphone-frame {
+    animation: slideUp 1.2s ease-out forwards;
+    animation-delay: 3.2s;
+    animation-play-state: paused;
+    visibility: hidden;
+  }
+  
+  .iphone-frame.animate {
+    visibility: visible;
+    animation-play-state: running;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 body, html {
     margin: 0;
     padding: 0;

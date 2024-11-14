@@ -527,6 +527,28 @@
     </main>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const section = document.querySelector('.chat-demo-section');
+          const phone = document.querySelector('.iphone-frame');
+        
+          const checkScroll = () => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+        
+            if (sectionTop < windowHeight * 0.75) {
+              section.classList.add('animate');
+              phone.classList.add('animate');
+              window.removeEventListener('scroll', checkScroll);
+            }
+          };
+        
+          window.addEventListener('scroll', checkScroll);
+          checkScroll(); // Check initial position
+        });
+        </script>
+
+
+    <script>
         const header = document.getElementById('header');
         const navLinks = document.querySelectorAll('.nav-link');
         let currentLang = 'en';
@@ -586,6 +608,7 @@
     <script src="animations/header.js"></script>
     <script src="animations/landing-page.js"></script>
     <script src="animations/gallery.js"></script> 
+    <script src="animations/phone.js"></script> 
     <script>
         // Initialize AOS
         AOS.init({
