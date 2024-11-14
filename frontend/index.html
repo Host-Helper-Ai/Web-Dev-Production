@@ -8,9 +8,52 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="language-selector.css">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <!-- Language Chooser -->
+    <div class="language-overlay" id="languageOverlay">
+        <div class="language-container">
+            <div class="language-options">
+                <button class="language-option" onclick="selectLanguage('en')">
+                    <div class="flag-container">
+                        <img src="assets/icons/americaflag.jpg" alt="English Flag">
+                    </div>
+                </button>
+                
+                <button class="language-option" onclick="selectLanguage('es')">
+                    <div class="flag-container">
+                        <img src="assets/icons/spainflag.jpg" alt="Spanish Flag">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    function selectLanguage(lang) {
+        const overlay = document.getElementById('languageOverlay');
+        overlay.classList.add('hiding');
+        
+        // Switch language using your existing function
+        if (window.switchLanguage) {
+            window.switchLanguage(lang);
+        }
+        
+        // Hide overlay after animation completes
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+        }, 500);
+    }
+    
+    // Ensure overlay is visible when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.getElementById('languageOverlay');
+        overlay.style.opacity = '1';
+    });
+    </script>
+
     <!-- Keep your existing background shapes -->
     <div class="background-shapes">
         <div class="shape shape-1"></div>
@@ -42,11 +85,6 @@
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
                         <span>Register</span>
                     </button>
-                </div>
-
-                <div class="language-switcher">
-                    <button onclick="switchLanguage('en')" class="active">EN</button>
-                    <button onclick="switchLanguage('es')">ES</button>
                 </div>
 
                 <button class="mobile-menu-button" onclick="toggleMobileMenu()">
