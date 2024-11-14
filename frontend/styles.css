@@ -112,9 +112,15 @@ header {
 .logo {
     position: absolute;
     left: 0;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+    width: -50px;
+    object-fit: contain;
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
